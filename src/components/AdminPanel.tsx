@@ -57,7 +57,7 @@ export const AdminPanel = ({ currentAmount, isPaid, onUpdateAmount, onTogglePaid
     return (
       <Button 
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 left-6 z-50 bg-gradient-main hover:bg-gradient-main/90 text-primary-foreground border-0 shadow-glow rounded-2xl px-6 py-3 font-display font-semibold tracking-wide transition-all duration-300 hover:scale-105 animate-glow-pulse"
+        className="fixed bottom-4 left-4 z-50 bg-secondary hover:bg-secondary/80"
         size="sm"
       >
         Admin
@@ -66,82 +66,68 @@ export const AdminPanel = ({ currentAmount, isPaid, onUpdateAmount, onTogglePaid
   }
 
   return (
-    <div className="fixed inset-0 bg-background/90 backdrop-blur-xl z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-card/95 backdrop-blur-xl border-border/50 shadow-glow rounded-3xl animate-scale-in">
-        <CardHeader className="pb-4">
+    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-card/95 backdrop-blur-lg border-border shadow-glow">
+        <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="font-display text-xl font-bold text-foreground">Painel Administrativo</CardTitle>
+            <CardTitle className="text-foreground">Painel Admin</CardTitle>
             <Button 
               onClick={() => setIsOpen(false)}
               variant="ghost"
               size="sm"
-              className="text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-xl transition-all duration-200"
+              className="text-muted-foreground hover:text-foreground"
             >
               ✕
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4">
           {!isAuthenticated ? (
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="password" className="font-display font-medium text-foreground">Senha de Acesso</Label>
+              <div>
+                <Label htmlFor="password">Senha de Acesso</Label>
                 <Input
                   id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
-                  className="bg-input/50 border-border/50 rounded-xl backdrop-blur-sm font-display transition-all duration-200 focus:bg-input/80 focus:border-primary/50"
-                  placeholder="Digite a senha..."
+                  className="bg-input border-border"
                 />
               </div>
-              <Button 
-                onClick={handleLogin} 
-                className="w-full bg-gradient-main hover:bg-gradient-main/90 text-primary-foreground border-0 rounded-xl font-display font-semibold tracking-wide py-3 transition-all duration-300 hover:scale-[1.02]"
-              >
-                Entrar no Painel
+              <Button onClick={handleLogin} className="w-full">
+                Entrar
               </Button>
             </div>
           ) : (
-            <div className="space-y-6">
-              <div className="bg-muted/30 rounded-2xl p-4 space-y-3">
-                <Label className="font-display font-medium text-foreground text-base">Status do Pagamento</Label>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-3 h-3 rounded-full ${isPaid ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
-                    <span className={`font-display font-semibold ${isPaid ? 'text-green-600' : 'text-red-500'}`}>
-                      {isPaid ? 'Quitado' : 'Em Aberto'}
-                    </span>
-                  </div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="paid-switch">Status Pagamento</Label>
+                <div className="flex items-center space-x-2">
+                  <span className={`text-sm ${isPaid ? 'text-green-500' : 'text-red-500'}`}>
+                    {isPaid ? 'Pago' : 'Pendente'}
+                  </span>
                   <Switch
+                    id="paid-switch"
                     checked={isPaid}
                     onCheckedChange={onTogglePaid}
-                    className="data-[state=checked]:bg-primary"
                   />
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <Label htmlFor="amount" className="font-display font-medium text-foreground text-base">Valor da Dívida</Label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground font-display">R$</span>
-                  <Input
-                    id="amount"
-                    type="number"
-                    value={newAmount}
-                    onChange={(e) => setNewAmount(e.target.value)}
-                    className="bg-input/50 border-border/50 rounded-xl backdrop-blur-sm font-display pl-10 transition-all duration-200 focus:bg-input/80 focus:border-primary/50"
-                    placeholder="0,00"
-                  />
-                </div>
+              <div>
+                <Label htmlFor="amount">Valor da Dívida (R$)</Label>
+                <Input
+                  id="amount"
+                  type="number"
+                  value={newAmount}
+                  onChange={(e) => setNewAmount(e.target.value)}
+                  className="bg-input border-border"
+                />
               </div>
 
-              <Button 
-                onClick={handleUpdateAmount} 
-                className="w-full bg-gradient-main hover:bg-gradient-main/90 text-primary-foreground border-0 rounded-xl font-display font-semibold tracking-wide py-3 transition-all duration-300 hover:scale-[1.02]"
-              >
-                Atualizar Informações
+              <Button onClick={handleUpdateAmount} className="w-full">
+                Atualizar Valor
               </Button>
             </div>
           )}

@@ -9,12 +9,12 @@ interface StickyTimerProps {
 export const StickyTimer = ({ startDate, isVisible }: StickyTimerProps) => {
   return (
     <div 
-      className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-8 scale-95'
+      className={`fixed top-4 right-4 z-50 transition-all duration-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
       }`}
     >
-      <div className="bg-card/95 backdrop-blur-xl border border-border/50 rounded-2xl p-4 shadow-glow animate-glow-pulse">
-        <div className="font-display text-xs font-semibold text-muted-foreground mb-2 text-center uppercase tracking-wider">
+      <div className="bg-card/95 backdrop-blur-lg border border-border rounded-lg p-3 shadow-glow">
+        <div className="text-xs font-semibold text-muted-foreground mb-1 text-center">
           Allan deve há:
         </div>
         <DebtTimer startDate={startDate} isCompact />
