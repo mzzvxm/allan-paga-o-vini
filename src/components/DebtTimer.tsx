@@ -39,8 +39,8 @@ export const DebtTimer = ({ startDate, isCompact = false }: DebtTimerProps) => {
 
   if (isCompact) {
     return (
-      <div className="flex items-center gap-2 bg-gradient-main px-4 py-2 rounded-lg shadow-glow">
-        <span className="text-sm font-bold text-primary-foreground">
+      <div className="flex items-center gap-2 bg-gradient-main px-4 py-2 rounded-xl shadow-glow animate-glow-pulse">
+        <span className="font-display text-sm font-bold text-primary-foreground">
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </span>
       </div>
@@ -48,9 +48,9 @@ export const DebtTimer = ({ startDate, isCompact = false }: DebtTimerProps) => {
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4 md:gap-8">
-      <div className="bg-gradient-main p-6 md:p-8 rounded-2xl shadow-glow text-center transform hover:scale-105 transition-transform duration-300">
-        <div className="text-4xl md:text-6xl font-bold text-primary-foreground mb-2">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
+      <div className="bg-gradient-main p-6 md:p-10 rounded-3xl shadow-glow text-center group hover:scale-105 transition-all duration-500 animate-scale-in">
+        <div className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 group-hover:scale-110 transition-transform">
           {timeLeft.days}
         </div>
         <div className="text-sm md:text-base font-semibold text-primary-foreground/80 uppercase tracking-wider">
@@ -58,8 +58,8 @@ export const DebtTimer = ({ startDate, isCompact = false }: DebtTimerProps) => {
         </div>
       </div>
 
-      <div className="bg-gradient-main p-6 md:p-8 rounded-2xl shadow-glow text-center transform hover:scale-105 transition-transform duration-300">
-        <div className="text-4xl md:text-6xl font-bold text-primary-foreground mb-2">
+      <div className="bg-gradient-main p-6 md:p-10 rounded-3xl shadow-glow text-center group hover:scale-105 transition-all duration-500 animate-scale-in" style={{animationDelay: '0.1s'}}>
+        <div className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 group-hover:scale-110 transition-transform">
           {timeLeft.hours}
         </div>
         <div className="text-sm md:text-base font-semibold text-primary-foreground/80 uppercase tracking-wider">
@@ -67,8 +67,8 @@ export const DebtTimer = ({ startDate, isCompact = false }: DebtTimerProps) => {
         </div>
       </div>
 
-      <div className="bg-gradient-main p-6 md:p-8 rounded-2xl shadow-glow text-center transform hover:scale-105 transition-transform duration-300">
-        <div className="text-4xl md:text-6xl font-bold text-primary-foreground mb-2">
+      <div className="bg-gradient-main p-6 md:p-10 rounded-3xl shadow-glow text-center group hover:scale-105 transition-all duration-500 animate-scale-in" style={{animationDelay: '0.2s'}}>
+        <div className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 group-hover:scale-110 transition-transform">
           {timeLeft.minutes}
         </div>
         <div className="text-sm md:text-base font-semibold text-primary-foreground/80 uppercase tracking-wider">
@@ -76,8 +76,8 @@ export const DebtTimer = ({ startDate, isCompact = false }: DebtTimerProps) => {
         </div>
       </div>
 
-      <div className="bg-gradient-main p-6 md:p-8 rounded-2xl shadow-glow text-center transform hover:scale-105 transition-transform duration-300 animate-pulse">
-        <div className="text-4xl md:text-6xl font-bold text-primary-foreground mb-2">
+      <div className="bg-gradient-main p-6 md:p-10 rounded-3xl shadow-glow text-center group hover:scale-105 transition-all duration-500 animate-glow-pulse">
+        <div className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 group-hover:scale-110 transition-transform animate-bounce-subtle">
           {timeLeft.seconds}
         </div>
         <div className="text-sm md:text-base font-semibold text-primary-foreground/80 uppercase tracking-wider">
